@@ -13,10 +13,14 @@
         android:theme="@style/Theme.ContadorDardos"
         tools:targetApi="31">
 
-        <!-- DartCounter Activity -->
+        <!-- MenuActivity -->
         <activity
-            android:name=".ui.game.DartCounterActivity"
+            android:name=".ui.game.menu.MenuActivity"
             android:exported="true"/>
+
+        <!-- DartCounterActivity -->
+        <activity android:name=".ui.game.content.DartCounterActivity" />
+
 
 
     </application>

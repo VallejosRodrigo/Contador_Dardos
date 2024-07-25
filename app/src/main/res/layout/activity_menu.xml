@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="295dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:text="@string/numero_de_jugadores"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
+
+    <Spinner
+        android:id="@+id/spinnerPlayerCount"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/player_counts"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="295dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:text="@string/marcador"
+        android:layout_marginTop="50dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
+
+    <Spinner
+        android:id="@+id/spinnerPlayerScore"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/player_score"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/buttonStartGame"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/comenzar" />
+
+</LinearLayout>

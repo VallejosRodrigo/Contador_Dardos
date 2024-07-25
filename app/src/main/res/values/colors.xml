@@ -10,4 +10,17 @@
     <color name="addGreen">#FF044212</color>
     <color name="backYellow">#FFEA9700</color>
     <color name="resetRed">#A8870B0B</color>
+    <color name="blue">#0000FF</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="orange">#FFA500</color>
+    <color name="purple">#B504B5</color>
+    <color name="teal">#008080</color>
+    <color name="brown">#A52A2A</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="default_color">#000000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
 </resources>

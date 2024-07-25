@@ -8,5 +8,35 @@
     <string name="add">Add</string>
     <string name="back"><![CDATA[<<]]></string>
     <string name="reset">x</string>
+    <string name="reset_all">Reset All</string>
+    <string name="numero_de_jugadores">Número de Jugadores</string>
+    <string name="marcador">Marcador</string>
+    <string name="comenzar">Comenzar</string>
+    <string name="image">image</string>
+    <string name="ingrese_el_nombre">Ingrese el nombre</string>
+
+    <string-array name="player_counts">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="player_score">
+        <item>101</item>
+        <item>201</item>
+        <item>301</item>
+        <item>401</item>
+        <item>501</item>
+        <item>601</item>
+        <item>701</item>
+        <item>801</item>
+        <item>901</item>
+        <item>1001</item>
+    </string-array>
 
 </resources>
