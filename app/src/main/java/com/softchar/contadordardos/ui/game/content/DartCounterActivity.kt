@@ -1,5 +1,6 @@
 package com.softchar.contadordardos.ui.game.content
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +10,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.softchar.contadordardos.R
+import com.softchar.contadordardos.ui.game.menu.MenuActivity
 import com.softchar.contadordardos.ui.viewmodel.DartCounterViewModel
 
 class DartCounterActivity : AppCompatActivity() {
@@ -52,6 +55,7 @@ class DartCounterActivity : AppCompatActivity() {
                 val buttonAdd = playerView.findViewById<Button>(R.id.buttonAdd)
                 val buttonBack = playerView.findViewById<Button>(R.id.buttonBack)
                 val buttonReset = playerView.findViewById<Button>(R.id.buttonReset)
+                val goToMenuButton = findViewById<Button>(R.id.buttonGoToMenu)
 
                 when (index) {
                     0 -> {
@@ -101,6 +105,10 @@ class DartCounterActivity : AppCompatActivity() {
                     }
                 }
 
+                goToMenuButton.setOnClickListener {
+                    showExitConfirmationDialog()
+                }
+
                 playerLiveData.observe(this) { player ->
                     playerNameTextView.text = player.name
                     playerScoreTextView.text = player.sum.toString()
@@ -130,6 +138,15 @@ class DartCounterActivity : AppCompatActivity() {
                 playerContainer.addView(playerView)
             }
         }
+
+        // Inicializa el OnBackPressedCallback
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showExitConfirmationDialog()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, callback)
+
     }
 
     private fun addPlayers(index: Int, playerInput: EditText){
@@ -224,6 +241,32 @@ class DartCounterActivity : AppCompatActivity() {
         )
         return images.random()
     }
+
+    private fun showExitConfirmationDialog() {
+        // Crea el AlertDialog.Builder
+        val builder = AlertDialog.Builder(this)
+
+        // Configura el título y el mensaje del diálogo
+        builder.setTitle("Confirmar salida")
+            .setMessage("¿Estás seguro de que quieres ir al menú? Todos los cambios se perderán.")
+
+        builder.setPositiveButton("Sí") { dialog, _ ->
+            navigateToMenu()
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    private fun navigateToMenu() {
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }
 
 

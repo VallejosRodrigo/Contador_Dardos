@@ -14,6 +14,8 @@
     <string name="comenzar">Comenzar</string>
     <string name="image">image</string>
     <string name="ingrese_el_nombre">Ingrese el nombre</string>
+    <string name="social_media_button">LinkedIn</string>
+    <string name="go_to_menu">menú</string>
 
     <string-array name="player_counts">
         <item>1</item>
