@@ -1,9 +1,11 @@
 package com.softchar.contadordardos.ui.game.content
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -188,7 +190,7 @@ class DartCounterActivity : AppCompatActivity() {
         val editNameEditText = dialogView.findViewById<EditText>(R.id.editNameEditText)
 
         editNameEditText.setText(player?.name)
-        editNameEditText.setSelection(editNameEditText.text.length)
+        editNameEditText.setSelection(0, editNameEditText.text.length)
 
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setView(dialogView)
@@ -198,19 +200,32 @@ class DartCounterActivity : AppCompatActivity() {
             }
             .setPositiveButton("Guardar") { dialog, _ ->
                 val newName = editNameEditText.text.toString()
-                if (newName.length in 1..6) {
+                if (newName.length in 1..10) {
                     player?.name = newName
                     playerLiveData?.value = player
                 } else {
-                    Toast.makeText(this, "El nombre debe tener entre 1 a 6 carácteres", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "El nombre debe tener entre 1 a 10 caracteres", Toast.LENGTH_SHORT).show()
                 }
                 dialog.dismiss()
             }
 
         val alertDialog = dialogBuilder.create()
         alertDialog.setTitle("Ingresa un Nombre")
+
         alertDialog.show()
+
+        editNameEditText.postDelayed({
+            editNameEditText.requestFocus()
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(editNameEditText, InputMethodManager.SHOW_IMPLICIT)
+        }, 500)
     }
+
+
+
+
+
+
 
     private fun showVictoryDialog(winnerIndex: Int) {
         val playerLiveData = dartCounterViewModel.players.value?.get(winnerIndex)
